@@ -55,8 +55,7 @@ void ajoutproduit(lo loper1,lp temp1,struct produit prod,struct date d){
 }
 int search (lp head,char code[25])
 {   lp l=head;
-    int i=0;
-    int pos=0;
+    int i=0,pos;
     bool mustExit = false;
     while(l!=NULL && !mustExit){
        if (strcmp (l->p.code,code)==0){pos=i;mustExit=true;}
@@ -75,6 +74,7 @@ void afficher_Liste( lp L){
         printf("le code du produit est : %s\n", Q->p.code);
         printf("le prix de vente de ce produit est : %d\n", Q->p.prix);
         printf("la description de ce produit est : %s\n", Q->p.description);
+        printf("________________________________________________________\n");
         Q=Q->suiv;
         i++;
       }
@@ -90,15 +90,15 @@ void afficher_HIS( lo L){
         printf("%s",Q->p.nom);
         printf(" de code ");
         printf("%s",Q->p.code);
-        printf(" a été ");
+        printf(" a ete ");
         if(Q->a=='a'){
-            printf("ajouté le ");
+            printf("ajoute le ");
         }
         else if(Q->a=='s'){
-            printf(" supprimé le ");
+            printf(" supprime le ");
         }
         else if(Q->a=='m'){
-            printf(" modifié le ");
+            printf(" modifie le ");
         }
         printf("%d",Q->dateop.jour);
         printf("/");
@@ -126,7 +126,7 @@ void del(lo loper1,lp head, char code[25], struct date d){
         head=head->suiv;
     }
     head->suiv=cur->suiv;
-    printf("le produit a été supprimé\n");
+    printf("le produit a ete supprime\n");
     while(loper1->suivant!=NULL){
         loper1 = loper1->suivant;}
     lo loper;
@@ -147,7 +147,7 @@ void mod(lo loper1,lp head,struct produit prod,struct date datemod,char code[25]
         cur=cur->suiv;
     }
     cur->p=prod;
-    printf("le produit a été modifié\n");
+    printf("le produit a ete modifie\n");
     while(loper1->suivant!=NULL){
         loper1 = loper1->suivant;}
     lo loper;
@@ -159,16 +159,22 @@ void mod(lo loper1,lp head,struct produit prod,struct date datemod,char code[25]
     loper1->suivant = loper;
 }
 void swap(lo a, lo b)
-{
+{   char i=a->a;
+    struct produit aux=a->p;
     int temp1 = a->dateop.annee;
     int temp2 = a->dateop.mois;
     int temp3 = a->dateop.jour;
+    a->p=b->p;
+    a->a=b->a;
     a->dateop.annee = b->dateop.annee;
     a->dateop.mois = b->dateop.mois;
     a->dateop.jour = b->dateop.jour;
     b->dateop.annee = temp1;
     b->dateop.mois = temp2;
     b->dateop.jour = temp3;
+    b->p=aux;
+    b->a=i;
+
 }
 
 void bubbleSort(lo start)
@@ -297,8 +303,8 @@ int main()
                 dateajout.mois=m1;
                 dateajout.jour=j1;
                 ajoutproduit(loper1,temp1,aux,dateajout);
-                printf("le produit est ajouté\n");
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("le produit est ajoute\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
@@ -311,7 +317,7 @@ int main()
                 int a2=0;
                 int m2=0;
                 int j2=0;
-                printf("donner le code du produit à supprimer\n");
+                printf("donner le code du produit a supprimer\n");
                 scanf("%s",code);
                 strcat(code,"\0");
                 printf("donner le jour de suppression\n");
@@ -324,7 +330,7 @@ int main()
                 datesup.mois=m2;
                 datesup.jour=j2;
                 del(loper1,temp1,code,datesup);
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
@@ -333,7 +339,7 @@ int main()
             }
             case 3:{
                 char code2[25];
-                printf("donner le code du produit à modifier\n");
+                printf("donner le code du produit a modifier\n");
                 scanf("%s",code2);
                 strcat(code2,"\0");
                 int pos;
@@ -377,7 +383,7 @@ int main()
                 dateajout.mois=m1;
                 dateajout.jour=j1;
                 mod(loper1,temp1,aux,dateajout,code,pos);}
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
@@ -386,14 +392,14 @@ int main()
             }
             case 4:{
                 afficher_Liste(temp1->suiv);
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
                 system("cls");
                 break;
             }
-            case 5:{ printf ("donner le code du produit à rechercher\n");
+            case 5:{ printf ("donner le code du produit a rechercher\n");
                     char codech[25];
                     scanf("%s",codech);
                     strcat(codech,"\0");
@@ -414,7 +420,7 @@ int main()
                         printf("le prix de vente de ce produit est : %d\n", listep->p.prix);
                         printf("la description de ce produit est : %s\n", listep->p.description);
                     }
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
@@ -441,7 +447,7 @@ int main()
                         }
                         printf("la description de ce produit est : %s\n", listep->p.description);
                     }
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
@@ -451,7 +457,7 @@ int main()
             case 7:{
                 bubbleSort(loper1->suivant);
                 afficher_HIS(loper1->suivant);
-                printf("appuyez sur un autre button pour revenir à la menu\n");
+                printf("appuyez sur un autre button pour revenir a la menu\n");
                 char q;
                 scanf("%c",&q);
                 fgets(&q,25,stdin);
