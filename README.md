@@ -1,11 +1,11 @@
-nom du projet : stock management 2022
-classe : 1IIE
-membres du groupe : Ahmed Aziz Rezgui
+Nom du projet : stock management 2022
+Classe : 1IIE
+Membres du groupe : Ahmed Aziz Rezgui
                     Dhia Eddine Rahali
                     Wiem Hajji
                     Hassen Gadacha
 
-description :
+Description :
 notre travail est basé sur les listes chainées car c'est une structure de données dynamique 
 et aide dans la réservation de mémoire.
 
@@ -23,21 +23,21 @@ en tant qu'utilisateur, vous etes demandés de valider la fonction login:
 
 les fonctions utilisées sont :
 
-ajoutproduit: permet l'ajout d'un produit à la liste des produits "temp1" et l'ajout 
+Ajoutproduit: permet l'ajout d'un produit à la liste des produits "temp1" et l'ajout 
 de l'opération à la liste des opérations.
 
-search: permet la recherche de la position d'un produit ajouté avec son code. 
+Search: permet la recherche de la position d'un produit ajouté avec son code. 
 
-afficher_Liste: affiche si la liste est vide sinon elle affiche la description de chaque
+Afficher_Liste: affiche si la liste est vide sinon elle affiche la description de chaque
 produit inséré ( nom , code, prix de vente, description).
 
-afficher_HIS: affiche la liste des opérations "loper1" si elle est vide sinon elle
+Afficher_HIS: affiche la liste des opérations "loper1" si elle est vide sinon elle
 affiche les produits ajoutés, supprimés et modifiés.
 
-del: permet la suppresion d'un produit de la liste des produits étant donné son code 
+Del: permet la suppresion d'un produit de la liste des produits étant donné son code 
 et l'ajout de l'opération à la liste des opérations.
 
-mod: permet de modifier les caractéristiques d'un produit étant donné son code et ajouter
+Mod: permet de modifier les caractéristiques d'un produit étant donné son code et ajouter
 cette operation à la liste des opérations.
 
-bubbleSort: tri à bulles qui range la liste des opérations selon la date.
+BubbleSort: tri à bulles qui range la liste des opérations selon la date.
